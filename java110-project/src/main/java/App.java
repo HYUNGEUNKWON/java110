@@ -31,6 +31,7 @@ public class App {
         
     }
     
+    
     static Member[] members = new Member[100];
 
     static int index = 0;
@@ -38,11 +39,58 @@ public class App {
     static Scanner keyIn = new Scanner(System.in);
 
     public static void main(String[] args) {
+        while(true) {
+            String menu = promptMenu();
 
-        inputMembers();
-        printMembers();
-
+            if(menu.equals("1")) {
+                serviceStudentMenu();
+            } else if(menu.equals("0")){
+                System.out.println("안녕히 가세요!");
+                break;
+            }
+        }
         keyIn.close();
+    }
+    private static void serviceStudentMenu() {
+        while(true) {
+            System.out.print("학생 관리> ");
+            String command = keyIn.nextLine();
+            if (command.equals("list")) {
+                printMembers();
+            } else if(command.equals("add")){
+                inputMembers();
+            } else if(command.equals("quit")) {
+                break;
+            } else {
+                System.out.println("유효하지 않은 명령입니다.");
+            }
+        }
+    }
+
+    private static String promptMenu() {
+        //사용자로부터 메뉴를 입력 받기
+        System.out.println("[메뉴]");
+        System.out.println("1. 학생 관리");
+        System.out.println("2. 강사 관리");
+        System.out.println("3. 매니저 관리");
+        System.out.println("0. 종료");
+
+        while(true) {
+            System.out.print("메뉴 번호> ");
+
+            String menu = keyIn.nextLine();
+
+            switch(menu) {
+            case "1":
+            case "2":
+            case "3":
+            case "0":
+                return menu;
+            default:
+                System.out.println("메뉴 번호가 유효하지 않습니다.");
+            }
+        }
+
     }
 
     static void printMembers() {
