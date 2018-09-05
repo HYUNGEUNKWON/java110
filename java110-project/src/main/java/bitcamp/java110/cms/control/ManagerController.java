@@ -1,15 +1,18 @@
+package bitcamp.java110.cms.control;
 import java.util.Scanner;
 
-public class TeacherController {
+import bitcamp.java110.cms.domain.Member;
 
-    static Teacher[] teachers = new Teacher[100];
-    static int teacherIndex = 0;
-    static Scanner keyIn;
+
+public class ManagerController {
+
+    static Manager[] managers = new Manager[100];
+    static int managerIndex = 0;
+    public static Scanner keyIn;
     
-    static class Teacher extends Member {
+    static class Manager extends Member {
         protected String tel;
-        protected int pay;
-        protected String subjects;
+        protected String position;
         
         public String getTel() {
             return tel;
@@ -17,30 +20,24 @@ public class TeacherController {
         public void setTel(String tel) {
             this.tel = tel;
         }
-        public int getPay() {
-            return pay;
+        public String getPosition() {
+            return position;
         }
-        public void setPay(int pay) {
-            this.pay = pay;
-        }
-        public String getSubjects() {
-            return subjects;
-        }
-        public void setSubjects(String subjects) {
-            this.subjects = subjects;
+        public void setPosition(String position) {
+            this.position = position;
         }
         
         
     }
     
-    static void serviceTeacherMenu() {
+    public static void serviceManagerMenu() {
         while(true) {
-            System.out.print("강사 관리> ");
+            System.out.print("매니저 관리> ");
             String command = keyIn.nextLine();
             if (command.equals("list")) {
-                printTeachers();
+                printManagers();
             } else if(command.equals("add")){
-                inputTeachers();
+                inputManagers();
             } else if(command.equals("quit")) {
                 break;
             } else {
@@ -49,25 +46,24 @@ public class TeacherController {
         }
     }
     
-    static void printTeachers() {
+    private static void printManagers() {
         int count = 0;
-        for(Teacher s : teachers){
-            if(count++ == teacherIndex)
+        for(Manager s : managers){
+            if(count++ == managerIndex)
                 break;
-            System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+            System.out.printf("%s, %s, %s, %s, %s\n",
                     s.getNames(), 
                     s.getEmails(),
                     s.getPasswords(),
                     s.getTel(),
-                    s.getPay(),
-                    s.getSubjects());
+                    s.getPosition());
         }
     }
     
     
-    static void inputTeachers() {
+    private static void inputManagers() {
         while(true) {
-            Teacher m = new Teacher();
+            Manager m = new Manager();
             System.out.print("이름? ");
             m.setNames(keyIn.nextLine());
 
@@ -80,13 +76,10 @@ public class TeacherController {
             System.out.print("전화번호? ");
             m.setTel(keyIn.nextLine());
 
-            System.out.print("시급? ");
-            m.setPay(Integer.parseInt(keyIn.nextLine()));
+            System.out.print("직책? ");
+            m.setPosition(keyIn.nextLine());
             
-            System.out.print("강의과목?(예: 자바, C, C++) ");
-            m.setSubjects(keyIn.nextLine());
-            
-            teachers[teacherIndex++] = m;
+            managers[managerIndex++] = m;
 
             System.out.print("계속 하시겠습니까? (Y/n)");
             String answer = keyIn.nextLine();
