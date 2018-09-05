@@ -5,7 +5,6 @@ public class Member {
     protected String emails;
     protected String passwords;
 
-    // 인스턴스의 메모리를 다루는 operator = setter/getter = accessor = property = message
     public String getNames() {
         return names;
     }

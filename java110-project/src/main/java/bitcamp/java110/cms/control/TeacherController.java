@@ -44,6 +44,10 @@ public class TeacherController {
                 printTeachers();
             } else if(command.equals("add")){
                 inputTeachers();
+            } else if(command.equals("delete")){
+                deleteTeacher();
+            } else if(command.equals("detail")){
+                detailTeacher();
             } else if(command.equals("quit")) {
                 break;
             } else {
@@ -57,7 +61,8 @@ public class TeacherController {
         for(Teacher s : teachers){
             if(count++ == teacherIndex)
                 break;
-            System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+            System.out.printf("%d: %s, %s, %s, %s, %d, [%s]\n",
+                    count - 1,
                     s.getNames(), 
                     s.getEmails(),
                     s.getPasswords(),
@@ -89,6 +94,10 @@ public class TeacherController {
             System.out.print("강의과목?(예: 자바, C, C++) ");
             m.setSubjects(keyIn.nextLine());
             
+            if (teacherIndex == teachers.length) {
+                increaseStorage();
+            }
+            
             teachers[teacherIndex++] = m;
 
             System.out.print("계속 하시겠습니까? (Y/n)");
@@ -97,7 +106,69 @@ public class TeacherController {
                 break;
         }
     }
+
+    private static void increaseStorage() {
+        Teacher[] newList = new Teacher[teachers.length+3];
+        for (int i = 0; i < teachers.length; i++) {
+            newList[i] = teachers[i];
+        }
+        teachers = newList;
+    }
+
+
+    private static void deleteTeacher() {
+        System.out.print("삭제할 번호? ");
+        int no = Integer.parseInt(keyIn.next());
+
+        if (no < 0 || no >= teacherIndex) {
+            System.out.println("무효한 번호입니다.");
+            return;
+        }
+        for (int i = no; i < teacherIndex - 1; i++) {
+            teachers[i] = teachers[i+1];
+        }
+        teacherIndex--;
+        System.out.println("삭제하였습니다.");
+    }
     
+    private static void detailTeacher() {
+        System.out.print("조회할 번호? ");
+        int no = Integer.parseInt(keyIn.next());
+
+        if (no < 0 || no >= teacherIndex) {
+            System.out.println("무효한 번호입니다.");
+            return;
+        }
+        
+        System.out.printf("이름: %s\n", teachers[no].getNames());
+        System.out.printf("이메일: %s\n", teachers[no].getEmails());
+        System.out.printf("암호: %s\n", teachers[no].getPasswords());
+        System.out.printf("전화: %s\n", teachers[no].getTel());
+        System.out.printf("시급: %s\n", teachers[no].getPay());
+        System.out.printf("과목: %s\n", teachers[no].getSubjects());
+    }
+    
+    static {
+        Teacher s = new Teacher();
+        s.setNames("a");
+        teachers[teacherIndex++] = s;
+        
+        s = new Teacher();
+        s.setNames("b");
+        teachers[teacherIndex++] = s;
+        
+        s = new Teacher();
+        s.setNames("c");
+        teachers[teacherIndex++] = s;
+        
+        s = new Teacher();
+        s.setNames("d");
+        teachers[teacherIndex++] = s;
+        
+        s = new Teacher();
+        s.setNames("e");
+        teachers[teacherIndex++] = s;
+    }
 
 
 }
