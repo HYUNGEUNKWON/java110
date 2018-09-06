@@ -1,8 +1,14 @@
 # java110-project
 
+## tag: v0.9
+
+- 제네릭 활용법
+- ArrayList에 제네릭 활용하기
+
 ## tag: v0.8
 
 - 목록을 다루는 클래스들을 리팩토링하기
+- 다형적 변수의 활용법
 - StudentList, ManagerList, TeacherList 클래스를 한 클래스로 합친다.
 - 다형적 변수를 사용하여 Student, Manager, Teacher 객체를 모두 저장할 수 있게 한다.
 
