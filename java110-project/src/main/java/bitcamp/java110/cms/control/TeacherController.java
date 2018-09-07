@@ -1,4 +1,5 @@
 package bitcamp.java110.cms.control;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -6,12 +7,10 @@ import bitcamp.java110.cms.domain.Teacher;
 
 public class TeacherController implements Controller {
 
-    private List<Teacher> teachers;
+    public String name = "2";
+    private List<Teacher> teachers = new ArrayList<>();
     
-    public TeacherController(List<Teacher> teachers) {
-        this.teachers = teachers;
-        init();
-    }
+
     
     public void service(Scanner keyIn) {
         while(true) {
@@ -113,25 +112,4 @@ public class TeacherController implements Controller {
         System.out.printf("과목: %s\n", teacher.getSubjects());
     }
     
-    private void init() {
-        Teacher s = new Teacher();
-        s.setNames("a");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setNames("b");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setNames("c");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setNames("d");
-        teachers.add(s);
-        
-        s = new Teacher();
-        s.setNames("e");
-        teachers.add(s);
-    }
 }

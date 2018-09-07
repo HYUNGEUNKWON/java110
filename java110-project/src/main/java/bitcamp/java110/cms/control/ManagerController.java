@@ -1,4 +1,5 @@
 package bitcamp.java110.cms.control;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -6,12 +7,9 @@ import bitcamp.java110.cms.domain.Manager;
 
 public class ManagerController implements Controller {
 
-    private List<Manager> managers;
+    public String name = "3";
+    private List<Manager> managers = new ArrayList<>();
     
-    public ManagerController(List<Manager> managers) {
-        this.managers = managers;
-        init();
-    }
    
     public void service(Scanner keyIn) {
         while(true) {
@@ -104,28 +102,6 @@ public class ManagerController implements Controller {
         System.out.printf("암호: %s\n", manager.getPasswords());
         System.out.printf("전화: %s\n", manager.getTel());
         System.out.printf("직책: %s\n", manager.getPosition());
-    }
-    
-    private void init() {
-        Manager s = new Manager();
-        s.setNames("a");
-        managers.add(s);
-        
-        s = new Manager();
-        s.setNames("b");
-        managers.add(s);
-        
-        s = new Manager();
-        s.setNames("c");
-        managers.add(s);
-        
-        s = new Manager();
-        s.setNames("d");
-        managers.add(s);
-        
-        s = new Manager();
-        s.setNames("e");
-        managers.add(s);
     }
 
 }

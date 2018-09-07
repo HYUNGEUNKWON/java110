@@ -5,6 +5,7 @@
 ## java110-project (tag: v1.4)
 
 - 리플렉션 API 활용
+- File 클래스로 디렉토리 및 파일 다루기
 - 미니 IoC 컨테이너 작성
 
 ## java110-project (tag: v1.3)
