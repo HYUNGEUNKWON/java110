@@ -1,13 +1,23 @@
 # java110-project
 
+## tag: v1.3
+
+- 인터페이스 활용
+- App클래스와 Controller들 사이의 호출 규칙(사용규칙)을 인터페이스로 정의한다.
+
+## tag: v1.2
+
+- 자바 컬렉션 API TKDYD
+- 직접 제작한 List, ArrayList, LinkedList 대신에 자바에서 제공하는 Collection API사용
+
 ## tag: v1.1
 
 - 인터페이스 적용
+- 의존 객체(Dependency Injection) 주입 적용
 - 데이터 목록을 다룰 때 호출하는 메서드의 규칙을 정의한다.
     - 다양한 방법으로 구현한 객체를 사용할 수 있다.
     - 즉 규칙을 따르기만 한다면 어떤 객체라도 대체할 수 있다.
 - 인터페이스의 default 메서드의 활용
-- 의존 객체(Dependency Injection) 주입 적용
 
 ## tag: v1.0
 
