@@ -12,7 +12,7 @@ public class ManagerController implements Controller {
         this.managers = managers;
         init();
     }
-    
+   
     public void service(Scanner keyIn) {
         while(true) {
             System.out.print("매니저 관리> ");

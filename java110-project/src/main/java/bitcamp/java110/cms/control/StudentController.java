@@ -103,7 +103,7 @@ public class StudentController implements Controller {
             System.out.println("무효한 번호입니다.");
             return;
         }
-        
+       
         Student student = students.get(no);
         
         System.out.printf("이름: %s\n", student.getNames());

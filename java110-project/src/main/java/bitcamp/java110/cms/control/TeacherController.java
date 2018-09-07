@@ -32,7 +32,7 @@ public class TeacherController implements Controller {
             }
         }
     }
-    
+   
     private void printTeachers() {
         for(int i = 0; i < teachers.size(); i++){
             Teacher s = teachers.get(i);

@@ -29,7 +29,7 @@ public class App {
                 System.out.println("안녕히 가세요!");
                 break;
             } 
-            
+           
             Controller controller = requestHandlerMapping.get(menu);
             
             if (controller != null) {
