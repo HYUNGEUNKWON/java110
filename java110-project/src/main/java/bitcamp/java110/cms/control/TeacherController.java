@@ -39,9 +39,9 @@ public class TeacherController {
             Teacher s = teachers.get(i);
             System.out.printf("%d: %s, %s, %s, %s, %d, [%s]\n",
                     i,
-                    s.getNames(), 
-                    s.getEmails(),
-                    s.getPasswords(),
+                    s.getName(), 
+                    s.getEmail(),
+                    s.getPassword(),
                     s.getTel(),
                     s.getPay(),
                     s.getSubjects());
@@ -53,13 +53,13 @@ public class TeacherController {
             Teacher m = new Teacher();
             
             System.out.print("이름? ");
-            m.setNames(keyIn.nextLine());
+            m.setName(keyIn.nextLine());
 
             System.out.print("이메일? ");
-            m.setEmails(keyIn.nextLine());
+            m.setEmail(keyIn.nextLine());
 
             System.out.print("암호? ");
-            m.setPasswords(keyIn.nextLine());
+            m.setPassword(keyIn.nextLine());
 
             System.out.print("전화번호? ");
             m.setTel(keyIn.nextLine());
@@ -106,9 +106,9 @@ public class TeacherController {
         
         Teacher teacher = teachers.get(no);
         
-        System.out.printf("이름: %s\n", teacher.getNames());
-        System.out.printf("이메일: %s\n", teacher.getEmails());
-        System.out.printf("암호: %s\n", teacher.getPasswords());
+        System.out.printf("이름: %s\n", teacher.getName());
+        System.out.printf("이메일: %s\n", teacher.getEmail());
+        System.out.printf("암호: %s\n", teacher.getPassword());
         System.out.printf("전화: %s\n", teacher.getTel());
         System.out.printf("시급: %d\n", teacher.getPay());
         System.out.printf("과목: %s\n", teacher.getSubjects());

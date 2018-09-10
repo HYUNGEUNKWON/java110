@@ -37,9 +37,9 @@ public class ManagerController {
         for(int i = 0; i < managers.size(); i++){
             Manager s = managers.get(i);
             System.out.printf("%s, %s, %s, %s, %s\n",
-                    s.getNames(), 
-                    s.getEmails(),
-                    s.getPasswords(),
+                    s.getName(), 
+                    s.getEmail(),
+                    s.getPassword(),
                     s.getTel(),
                     s.getPosition());
         }
@@ -51,13 +51,13 @@ public class ManagerController {
             Manager m = new Manager();
             
             System.out.print("이름? ");
-            m.setNames(keyIn.nextLine());
+            m.setName(keyIn.nextLine());
 
             System.out.print("이메일? ");
-            m.setEmails(keyIn.nextLine());
+            m.setEmail(keyIn.nextLine());
 
             System.out.print("암호? ");
-            m.setPasswords(keyIn.nextLine());
+            m.setPassword(keyIn.nextLine());
 
             System.out.print("전화번호? ");
             m.setTel(keyIn.nextLine());
@@ -99,9 +99,9 @@ public class ManagerController {
         
         Manager manager = managers.get(no);
         
-        System.out.printf("이름: %s\n", manager.getNames());
-        System.out.printf("이메일: %s\n", manager.getEmails());
-        System.out.printf("암호: %s\n", manager.getPasswords());
+        System.out.printf("이름: %s\n", manager.getName());
+        System.out.printf("이메일: %s\n", manager.getEmail());
+        System.out.printf("암호: %s\n", manager.getPassword());
         System.out.printf("전화: %s\n", manager.getTel());
         System.out.printf("직책: %s\n", manager.getPosition());
     }
