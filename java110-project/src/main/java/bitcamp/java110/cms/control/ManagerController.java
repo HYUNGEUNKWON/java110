@@ -3,15 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import bitcamp.java110.cms.annotation.Component;
+import bitcamp.java110.cms.annotation.RequestMapping;
 import bitcamp.java110.cms.domain.Manager;
 
-@bitcamp.java110.cms.annotation.Component(value="3")
-public class ManagerController implements Controller {
+@Component("manager")
+public class ManagerController {
 
     private List<Manager> managers = new ArrayList<>();
     
-   
-    public void service(Scanner keyIn) {
+   @RequestMapping
+    public void manager(Scanner keyIn) {
         while(true) {
             System.out.print("매니저 관리> ");
             String command = keyIn.nextLine();
