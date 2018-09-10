@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import bitcamp.java110.cms.domain.Manager;
 
+@bitcamp.java110.cms.annotation.Component(value="3")
 public class ManagerController implements Controller {
 
-    public String name = "3";
     private List<Manager> managers = new ArrayList<>();
     
    

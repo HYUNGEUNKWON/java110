@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import bitcamp.java110.cms.domain.Student;
 
+@bitcamp.java110.cms.annotation.Component(value="1")
 public class StudentController implements Controller {
 
-    public String name = "1";
     private List<Student> students = new ArrayList<>();
     
     public StudentController() {

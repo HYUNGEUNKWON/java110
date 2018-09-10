@@ -2,6 +2,8 @@ package bitcamp.java110.cms.control;
 
 import java.util.Scanner;
 
+// 일반 주석!
+@bitcamp.java110.cms.annotation.Component(value="4")
 public class HelloController implements Controller {
     
     public String name = "4";
