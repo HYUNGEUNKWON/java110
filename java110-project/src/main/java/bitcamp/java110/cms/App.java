@@ -11,8 +11,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         
-        ApplicationContext iocContainer = 
-                new ApplicationContext("bitcamp.java110.cms");
+        ApplicationContext iocContainer = new ApplicationContext("bitcamp.java110.cms");
         
         RequestMappingHandlerMapping requestHandlerMap = 
                 new RequestMappingHandlerMapping();
