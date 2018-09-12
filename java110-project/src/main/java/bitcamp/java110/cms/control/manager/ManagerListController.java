@@ -10,26 +10,26 @@ import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
-public class ManagerListController { 
-
+public class ManagerListController {
+    
     ManagerDao managerDao;
     
     @Autowired
     public void setManagerDao(ManagerDao managerDao) {
         this.managerDao = managerDao;
     }
-
+    
     @RequestMapping("manager/list")
     public void list(Scanner keyIn) {
         List<Manager> list = managerDao.findAll();
-        for (Manager s : list) {
-            System.out.printf("%s, %s, %s, %s, %s\n",
-                    s.getName(), 
-                    s.getEmail(), 
-                    s.getPassword(), 
-                    s.getTel(),
-                    s.getPosition());
+        
+        for (Manager m : list) {
+            System.out.printf("%s, %s, %s, %s, %s\n", 
+                    m.getName(), 
+                    m.getEmail(), 
+                    m.getPassword(), 
+                    m.getTel(),
+                    m.getPosition());
         }
     }
-    
 }

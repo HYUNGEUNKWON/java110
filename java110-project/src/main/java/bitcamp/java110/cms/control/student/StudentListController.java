@@ -18,7 +18,7 @@ public class StudentListController {
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
-
+    
     @RequestMapping("student/list")
     public void list(Scanner keyIn) {
         List<Student> list = studentDao.findAll();

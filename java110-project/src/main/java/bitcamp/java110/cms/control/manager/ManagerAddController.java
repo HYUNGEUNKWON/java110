@@ -9,10 +9,10 @@ import bitcamp.java110.cms.dao.ManagerDao;
 import bitcamp.java110.cms.domain.Manager;
 
 @Component
-public class ManagerAddController { 
-
+public class ManagerAddController {
+    
     ManagerDao managerDao;
-  
+    
     @Autowired
     public void setManagerDao(ManagerDao managerDao) {
         this.managerDao = managerDao;
@@ -38,17 +38,16 @@ public class ManagerAddController {
             System.out.print("직위? ");
             m.setPosition(keyIn.nextLine());
             
-            if (managerDao.insert(m) > 0) {
+            if(managerDao.insert(m) > 0) {
                 System.out.println("저장하였습니다.");
-            } else {
-                System.out.println("같은 이메일의 매니저가 존재합니다.");
+            }   else {
+                System.out.println("같은 이메일의 매니져가 존재합니다.");
             }
             
-            System.out.print("계속 하시겠습니까?(Y/n) ");
+            System.out.print("\n계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
             if (answer.toLowerCase().equals("n"))
                 break;
         }
     }
-    
 }

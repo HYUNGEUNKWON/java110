@@ -18,13 +18,13 @@ public class TeacherListController {
     public void setTeacherDao(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }
-
+    
     @RequestMapping("teacher/list")
     public void list(Scanner keyIn) {
         List<Teacher> list = teacherDao.findAll();
         
         for (Teacher t : list) {
-            System.out.printf("%s, %s, %s, %s, %d, [%s]\n",
+            System.out.printf("%s, %s, %s, %s, %d, [%s]\n", 
                     t.getName(), 
                     t.getEmail(), 
                     t.getPassword(), 
