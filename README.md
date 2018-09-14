@@ -5,6 +5,9 @@
 ## java110-project (tag: v2.6)
 
 - Client/Server 구조로 변경
+- 소켓 프로그래밍 구현
+- 멀티 스레딩 구현
+- 프로토콜 개념 이해 
 
 ## java110-project (tag: v2.5)
 
