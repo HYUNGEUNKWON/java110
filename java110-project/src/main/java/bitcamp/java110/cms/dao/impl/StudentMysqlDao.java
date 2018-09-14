@@ -23,13 +23,12 @@ public class StudentMysqlDao implements StudentDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     public int insert(Student student) {
         Connection con = null;
         Statement stmt = null;
         
         try {
-            
             con = dataSource.getConnection();
             
             con.setAutoCommit(false);
@@ -60,7 +59,7 @@ public class StudentMysqlDao implements StudentDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch(Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
@@ -218,7 +217,7 @@ public class StudentMysqlDao implements StudentDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch(Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {

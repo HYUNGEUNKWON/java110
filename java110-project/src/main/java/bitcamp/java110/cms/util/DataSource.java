@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class DataSource {
     Connection con;
@@ -18,6 +17,7 @@ public class DataSource {
                     "jdbc:mariadb://localhost:3306/studydb", 
                     "study", "1111");
         }
+        
         return this.con;
     }
 }

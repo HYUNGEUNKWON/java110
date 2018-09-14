@@ -23,13 +23,12 @@ public class TeacherMysqlDao implements TeacherDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    
+
     public int insert(Teacher teacher) {
         Connection con = null;
         Statement stmt = null;
         
         try {
-            
             con = dataSource.getConnection();
             
             con.setAutoCommit(false);
@@ -60,7 +59,7 @@ public class TeacherMysqlDao implements TeacherDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch(Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
@@ -218,7 +217,7 @@ public class TeacherMysqlDao implements TeacherDao {
             return 1;
             
         } catch (Exception e) {
-            try {con.rollback();} catch(Exception e2) {}
+            try {con.rollback();} catch (Exception e2) {}
             throw new DaoException(e);
             
         } finally {
