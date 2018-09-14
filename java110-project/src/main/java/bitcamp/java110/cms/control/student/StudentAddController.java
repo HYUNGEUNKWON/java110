@@ -13,12 +13,11 @@ public class StudentAddController {
     
     StudentDao studentDao;
     
-    
     @Autowired
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
-    
+
     @RequestMapping("student/add")
     public void add(Scanner keyIn) {
         while (true) {
@@ -42,7 +41,11 @@ public class StudentAddController {
             System.out.print("전화? ");
             m.setTel(keyIn.nextLine());
             
-            studentDao.insert(m);
+            if (studentDao.insert(m) > 0) {
+                System.out.println("저장하였습니다.");
+            } else {
+                System.out.println("같은 이메일의 학생이 존재합니다.");
+            }
             
             System.out.print("계속 하시겠습니까?(Y/n) ");
             String answer = keyIn.nextLine();
