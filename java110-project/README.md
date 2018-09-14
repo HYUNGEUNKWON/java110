@@ -1,5 +1,9 @@
 # java110-project
 
+## v2.4
+
+- DB 커넥션 공유
+
 ## v2.3
 
 - DAO에 JDBC 적용
