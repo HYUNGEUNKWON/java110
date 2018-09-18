@@ -2,16 +2,31 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v3.1) 
+
+- 웹서버를 중계 서버로 사용하기
+- 서블릿 컨테이너 적용
+
+## java110-project (tag: v3.0) 
+
+- 웹브라우저를 클라이언트로 사용하기
+- 서버에 HTTP 프로토콜을 처리하는 기능 추가
+
+## ## java110-project (tag: v2.9) 
+
+- Command 패턴으로 분할된 메서드를 한 클래스로 합치기
+
+## java110-project (tag: v2.8) 
+
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리)
+
 ## java110-project (tag: v2.7)
 
-- 멀티스레드 적용
+- 멀티스레드 적용하기(Connection-Oriented에서 Statelful 방식으로 요청 처리)
 
 ## java110-project (tag: v2.6)
 
 - Client/Server 구조로 변경
-- 소켓 프로그래밍 구현
-- 멀티 스레딩 구현
-- 프로토콜 개념 이해 
 
 ## java110-project (tag: v2.5)
 

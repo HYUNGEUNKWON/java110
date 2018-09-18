@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -76,29 +77,39 @@ public class ServerApp {
         public void run() {
             // 이 메서드에 "main" 스레드에서 분리하여 독립적으로 수행할 코드를 둔다.
             try (
-                Socket socket = this.socket;
-                PrintWriter out = new PrintWriter(
-                        new BufferedOutputStream(
-                                socket.getOutputStream()));
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(
-                                socket.getInputStream()));
-            ) {
-                String requestLine = in.readLine();
-                System.out.println("클라이언트 요청 받았음!");
-                
+                    Socket socket = this.socket;
+                    PrintWriter out = new PrintWriter(
+                            new BufferedOutputStream(
+                                    socket.getOutputStream()));
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(
+                                    socket.getInputStream()));
+                    ) {
+                // HTTP 요청 처리
+                boolean firstLine = true;
+                String requestURI = "";
+                while (true) {
+                    String line = in.readLine();
+                    if (line.length() == 0)
+                        break;
+                    if (firstLine) {
+                        requestURI = line.split(" ")[1];
+                        firstLine = false;
+                    }
+                }
                 // 요청 객체 준비
-                Request request = new Request(requestLine);
-                
+                // => requestURI에서 첫 번째 문자인 '/'는 제거한다.
+                Request request = new Request(requestURI.substring(1));
+
                 // 응답 객체 준비
-                Response response = new Response(out);
+                StringWriter strWriter = new StringWriter();
+                PrintWriter bufOut = new PrintWriter(strWriter);
+                Response response = new Response(bufOut);
 
                 RequestMappingHandler mapping = 
                         requestHandlerMap.getMapping(request.getAppPath());
                 if (mapping == null) {
-                    out.println("해당 요청을 처리할 수 없습니다.");
-                    out.println();
-                    out.flush();
+                    bufOut.println("해당 요청을 처리할 수 없습니다.");
                     return;
                 }
                 
@@ -108,10 +119,11 @@ public class ServerApp {
                     
                 } catch (Exception e) {
                     e.printStackTrace();
-                    out.println("요청 처리 중에 오류가 발생했습니다.");
+                    bufOut.println("요청 처리 중에 오류가 발생했습니다.");
                 }
-                out.println();
-                out.flush();
+                
+                responseHTTPMessage(out, strWriter.toString());
+                
                 
             } catch (Exception e) {// try
                 System.out.println(e.getMessage());
@@ -122,6 +134,14 @@ public class ServerApp {
             
             
         } // run() 
+
+        private void responseHTTPMessage(PrintWriter out, String message) {
+            out.println("HTTP/1.1 200 OK");
+            out.println("Content-Type: text/plain;charset=UTF-8");
+            out.println();
+            out.print(message);
+            out.flush();
+        }
         
     } // RequestWorker class
     
