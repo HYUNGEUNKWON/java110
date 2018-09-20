@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 
 // 필터를 만들었으면 어떤 요청에 대해 실행할 것인지 등록해야 한다.
 // URL은 반드시 "/"로 시작해야 한다.
-@WebFilter("/ex01/*")
+//@WebFilter("/ex01/*")
 public class Filter01 implements Filter{
 
     public Filter01() {
@@ -29,7 +29,7 @@ public class Filter01 implements Filter{
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        // 클라이언트가 요청한 서블릿을 싱해하기 전에
+        // 클라이언트가 요청한 서블릿을 실행하기 전에
         // 해당 URL에 등록한 필터를 실행한다.
         // 이떄 이 메서드가 호출된다.
         // 서블릿을 실행하기 전, 후에 수행해야할 작업이 있다면 이 메서드에서 실행한다.
