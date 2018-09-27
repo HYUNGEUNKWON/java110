@@ -1,17 +1,27 @@
 # java110-project
 
+## v4.1
+
+- 서블릿의 loadOnStartup 배치 속성을 이용하여 공용 자원을 준비하기
+- ServletContext를 이용하여 공용자원을 공유하기
+- 작업
+    - InitServlet 클래스 생성 
+    - InitServlet에서 DAO와 DataSource 준비하기
+    - ServletContext에 DAO 보관하기
+
 ## v4.0
 
 - 서블릿 기술을 적용하여 서버 애플리케이션 만들기
 - 작업
-    - 클라이언트 요청을 처리하는 컨트롤러를 서블릿으로 만들기
+    - 클라이언트 요청을 처리하는 컨트롤러를 서블릿으로 전환한다.
 
-## v3.1
+## v3.1 
 
 - 웹서버를 중계 서버로 사용하기
 - 서블릿 컨테이너 적용
     - 톰캣 서버 설치
-    - build.gradle에 servlet-api 라이브러리 추가
+    - build.gradle 에 servlet-api 라이브러리 추가 
+
 
 ## v3.0
 
@@ -29,11 +39,11 @@
 
 ## v2.8 (Stateless)
 
-- 멀티스레드 적용 (State)
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateless 방식으로 요청 처리)
 
-## v2.7
+## v2.7 (Stateful)
 
-- 멀티스레드 적용
+- 멀티스레드 적용하기(Connection-Oriented에서 Stateful 방식으로 요청 처리)
 - 별도의 스레드를 만들어 클라이언트의 요청을 처리하게 한다.
 - 즉 동시에 여러 클라이언트 요청을 처리한다.
 
@@ -41,8 +51,7 @@
 
 - Client/Server 구조로 변경
 - 소켓 프로그래밍 구현
-- 멀티 스레딩 구현
-- 프로토콜 개념 이해 
+- 프로토콜 개념 이해
 
 ## v2.5
 
@@ -52,10 +61,12 @@
     - Spring IoC 컨테이너 라이브러리 추가(build.gradle 파일 편집)
         - "spring context" 로 mvnrepository.com에서 검색한다.
         - 명령창에서 "gradle eclipse" 실행한다.
-        - 이클립스에서 프로젝트를 "refresh"한다.
+        - 이클립스에서 프로젝트를 "refresh" 한다.
     - 스프링 설정 파일 추가(application-context.xml)
         - bitcamp/java110/cms/conf/application-context.xml
-    - 기존의 ApplicationContext 클래스를 제거한다.
+    - 기존의 ApplicationContext 관련 클래스들을 제거한다.
+    - 기존의 @Autowired, @Component 애노테이션을 제거한다.
+    - 기존 클래스에서 사용한 애노테이션을 Spring 프레임워크에서 제공하는 것으로 바꾼다.
 
 ## v2.4
 
@@ -65,7 +76,7 @@
 ## v2.3
 
 - DAO에 JDBC 적용
-- 작업
+- 작업 
     - Data Modeling과 forward engineering 수행
     - 테이블 준비
     - JDBC API 활용
@@ -95,7 +106,7 @@
 - 작업
     - DAO에 데이터를 파일로 저장하고 읽는 기능 추가
     
-## v1.9
+## java110-project (tag: v1.9)
 
 - IoC 컨테이너가 객체 생성 후에 수행하는 작업을 별도의 클래스로 분리한다.
 - 향후 객체 생성 후에 또 다른 작업을 추가하기 쉽도록 한다.
