@@ -21,7 +21,7 @@ public class FooterServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         out.println("<footer>");
-        out.println("   <p>&copy;자바110기</p>");
+        out.println("    <p>&copy;자바110기</p>");
         out.println("</footer>");
     }
 }

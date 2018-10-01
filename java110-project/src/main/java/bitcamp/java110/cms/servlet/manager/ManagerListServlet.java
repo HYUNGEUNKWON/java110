@@ -73,6 +73,7 @@ public class ManagerListServlet extends HttpServlet {
         out.println("</tbody>");
         out.println("</table>");
         
+        // 페이지 꼬리말 포함하기
         rd = request.getRequestDispatcher("/footer");
         rd.include(request, response);
         
