@@ -1,5 +1,13 @@
 # java110-project
 
+## v4.8
+
+- filter를 이용하여 사용 권한 제어하기.
+- 작업
+    - Auth Filter class를 생성한다.
+    - add나 delete를 요청할 때 login여부를 검사한다.
+        (login 사용자만 add와 delete를 할 수 있도록 제어한다.)
+
 ## v4.7
 
 - 세션 적용하기
