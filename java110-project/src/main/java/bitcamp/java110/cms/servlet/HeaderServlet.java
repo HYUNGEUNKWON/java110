@@ -27,9 +27,9 @@ public class HeaderServlet extends HttpServlet {
         
         out.println("<header>");
         out.println("    <h1>비트캠프</h1>");
-            
         
         out.println("    <ul>");
+
         HttpSession session = request.getSession();
         Member loginUser = (Member)session.getAttribute("loginUser");
         if (loginUser == null) {
@@ -41,8 +41,10 @@ public class HeaderServlet extends HttpServlet {
             } else if (loginUser instanceof Teacher) {
                 loginType = "강사";
             }
-            out.printf("<li>[%s]%s(<a href='/auth/logout'>로그아웃</a>)</li>\n", loginType, loginUser.getName());
+            out.printf("<li>[%s]%s(<a href='/auth/logout'>로그아웃</a>)</li>\n", 
+                    loginType, loginUser.getName());
         }
+        
         out.println("        <li><a href='/student/list'>학생관리</a></li>");
         out.println("        <li><a href='/teacher/list'>강사관리</a></li>");
         out.println("        <li><a href='/manager/list'>매니저관리</a></li>");

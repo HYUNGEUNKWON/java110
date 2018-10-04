@@ -19,11 +19,14 @@ import bitcamp.java110.cms.domain.Member;
 @WebServlet("/auth/login")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
         
-        // 쿠키 데이터에 email이 있다면 꺼낸다.
+        // 쿠키 데이터에 email 이 있다면 꺼낸다.
         String email = "";
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -37,6 +40,7 @@ public class LoginServlet extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
@@ -55,7 +59,7 @@ public class LoginServlet extends HttpServlet {
         out.println("<tr>");
         out.println("    <th></th>");
         out.println("    <td>");
-        out.println("        <input type='radio' name='type' value='student' checked>학생");
+        out.println("        <input type='radio' name='type' value='student' checked>학생"); 
         out.println("        <input type='radio' name='type' value='teacher'>강사");
         out.println("        <input type='radio' name='type' value='manager'>매니저");
         out.println("    </td>");
@@ -80,7 +84,6 @@ public class LoginServlet extends HttpServlet {
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
-
     }
     
     @Override
@@ -94,11 +97,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String save = request.getParameter("save");
         
-        if (save != null) {// 이메일 저장하기를 체크했다면
+        
+        if (save != null) {// 이메일 저장하기를 체크했다면,
             Cookie cookie = new Cookie("email", email);
             cookie.setMaxAge(60 * 60 * 24 * 15);
             response.addCookie(cookie);
-        } else { // 이메일을 저장하고 싶지 않다면
+        } else {// 이메일을 저장하고 싶지 않다면,
             Cookie cookie = new Cookie("email", "");
             cookie.setMaxAge(0);
             response.addCookie(cookie);
@@ -129,8 +133,10 @@ public class LoginServlet extends HttpServlet {
             
             response.sendRedirect("../student/list");
         } else {
-            // 로그인 된 상태에서 다른 사용자로 로그인을 시도하다가 실패한다면 무조건 세션을 무효화시킨다.
+            // 로그인 된 상태에서 다른 사용자로 로그인을 시도하다가 
+            // 실패한다면 무조건 세션을 무효화시킨다.
             session.invalidate();
+
             response.sendRedirect("login");
         }
     }
