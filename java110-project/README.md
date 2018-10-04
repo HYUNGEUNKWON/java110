@@ -4,20 +4,20 @@
 
 - JSP를 활용한 MVC 모델 1 타입 적용
 - Servlet + JSP를 활용한 MVC 모델 2 타입 적용
-- 작업
+- MVC type 1 작업
     - /webapp/mvc1/manager/list.jsp 생성
     - /webapp/mvc1/header.jsp 생성
     - /webapp/mvc1/footer.jsp 생성
 - MVC type 2 작업
-    - 
-
+    - /webapp/manager/list.jsp 생성
+    - ManagerListServlet 변경
+       
 ## v4.8
 
-- filter를 이용하여 사용 권한 제어하기.
+- 필터를 이용하여 사용 권한 제어하기
 - 작업
-    - Auth Filter class를 생성한다.
-    - add나 delete를 요청할 때 login여부를 검사한다.
-        (login 사용자만 add와 delete를 할 수 있도록 제어한다.)
+    - AuthFilter 클래스를 생성하여 등록한다.
+    - 로그인 사용자만 add와 delete 할 수 있도록 제어한다.
 
 ## v4.7
 
@@ -36,7 +36,7 @@
     - 로그인 폼을 작성한다.
     - 아이디 저장 기능을 쿠키로 구현한다.
 
-## v4.5, 4.5.1
+## v4.5, v4.5.1
 
 - 포워드, 인클루드 적용하기
 - 작업
