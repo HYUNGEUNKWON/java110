@@ -16,7 +16,10 @@ public class Servlet14 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
         
         request.setCharacterEncoding("UTF-8");
         String tel = request.getParameter("tel");
@@ -25,7 +28,7 @@ public class Servlet14 extends HttpServlet {
         HttpSession session = request.getSession();
         String name = (String)session.getAttribute("name");
         String age = (String)session.getAttribute("age");
-
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
@@ -37,33 +40,13 @@ public class Servlet14 extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>최종 페이지</h1>");
-        out.printf("<p>이름: %s</p>", name);
-        out.printf("<p>나이: %s</p>", age);
-        out.printf("<p>전화: %s</p>", tel);
+        out.printf("<p>이름: %s</p>\n", name);
+        out.printf("<p>나이: %s</p>\n", age);
+        out.printf("<p>전화: %s</p>\n", tel);
         out.println("</body>");
         out.println("</html>");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

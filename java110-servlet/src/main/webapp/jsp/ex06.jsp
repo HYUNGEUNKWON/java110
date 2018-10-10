@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" 
+    contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,9 +18,9 @@ public String m1() {
 <h1>선언부(Declaration Element)</h1>
 <pre>
 - 자동으로 생성된 서블릿 클래스에 멤버를 추가할 때 사용한다.
-    &lt;%! 멤버 선언 %>
-  선언부에 작성한 코드는 그대로 클래스 블록 안에 복사될 것이기 때문에 
-  선언부에 위치는 상관없다.
+    &lt;%! 멤버 선언 %> 
+  선언부에 작성한 코드는 그래도 클래스 블록 안에 복사될 것이기 때문에
+  선언부를 작성하는 위치는 상관없다.
 - 자바코드:
     멤버 선언 코드는 그대로 클래스 블록 안에 복사된다.
     class test_jsp ... {
@@ -29,6 +30,7 @@ public String m1() {
         public void _jspService() {
             ...
         }
+    
     }
 - 멤버?
     - 클래스 필드 및 메서드(스태틱 필드 및 메서드)
@@ -43,16 +45,17 @@ public String m1() {
                 ...
             }
         }
-    - 클래스 블록(스태틱 블록), 인스턴스 블록
+    - 클래스 블록(스태틱 블록), 인스턴스 블록   
         static {
             ...
         }
         {
             ...
-        }
+        } 
+    
 </pre>
-m1() : <%= m1() %><br>
-m2() : <%= m2() %><br>
+m1() : <%= m1()%><br>
+m2() : <%= m2()%><br>
 </body>
 </html>
 
@@ -69,8 +72,32 @@ static { // 스태틱 블록
 }
 %>
 
-<%!
 
-%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

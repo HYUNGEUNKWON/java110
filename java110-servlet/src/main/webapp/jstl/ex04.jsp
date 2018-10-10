@@ -1,8 +1,8 @@
-<%@ page language="java"
+<%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,6 @@ application.setAttribute("name", "김구");
 4: ${applicationScope.name}<br>
 
 <hr>
-
 <c:remove var="name" scope="page"/>
 1: ${pageScope.name}<br>
 2: ${requestScope.name}<br>
@@ -35,7 +34,6 @@ application.setAttribute("name", "김구");
 4: ${applicationScope.name}<br>
 
 <hr>
-
 <c:remove var="name" scope="request"/>
 1: ${pageScope.name}<br>
 2: ${requestScope.name}<br>
@@ -43,7 +41,6 @@ application.setAttribute("name", "김구");
 4: ${applicationScope.name}<br>
 
 <hr>
-
 <c:remove var="name" scope="session"/>
 1: ${pageScope.name}<br>
 2: ${requestScope.name}<br>
@@ -51,7 +48,6 @@ application.setAttribute("name", "김구");
 4: ${applicationScope.name}<br>
 
 <hr>
-
 <c:remove var="name" scope="application"/>
 1: ${pageScope.name}<br>
 2: ${requestScope.name}<br>
@@ -60,6 +56,13 @@ application.setAttribute("name", "김구");
 
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

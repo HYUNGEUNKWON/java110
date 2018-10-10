@@ -1,12 +1,12 @@
 <%@page import="java.util.HashMap"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java"
+<%@page import="java.util.List"%>
+<%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +47,7 @@ pageContext.setAttribute("names2", names2);
 
 <h2>Map 객체</h2>
 <%
-Map<String, Object> names3 = new HashMap<>();
+Map<String,Object> names3 = new HashMap<>();
 names3.put("s01", "홍길동");
 names3.put("s02", "임꺽정");
 names3.put("s03", "유관순");
@@ -55,13 +55,14 @@ pageContext.setAttribute("names3", names3);
 %>
 
 <ul>
-<%-- Map 객체에 대해 반복문을 돌리면 var로 저장하는 것은 key와 value를 갖고있는 Entry 객체이다. --%>
+<%-- Map 객체에 대해 반복문을 돌리면 var로 저장하는 것은 
+     key와 value를 갖고 있는 Entry 객체이다. --%>
 <c:forEach items="${pageScope.names3}" var="n">
     <li>${n.key} : ${n.value}</li>
 </c:forEach>
 </ul>
 
-<h2>CVS(Comma Separated Value) 문자열</h2>
+<h2>CVS(comma separated value) 문자열</h2>
 <%
 pageContext.setAttribute("names4", "홍길동,임꺽정,유관순,김구");
 %>
@@ -71,9 +72,15 @@ pageContext.setAttribute("names4", "홍길동,임꺽정,유관순,김구");
     <li>${n}</li>
 </c:forEach>
 </ul>
-
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

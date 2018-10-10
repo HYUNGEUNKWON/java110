@@ -16,7 +16,10 @@ public class Servlet13 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+                    throws ServletException, IOException {
         
         request.setCharacterEncoding("UTF-8");
         String age = request.getParameter("age");
@@ -37,33 +40,13 @@ public class Servlet13 extends HttpServlet {
         out.println("<body>");
         out.println("<h1>3페이지</h1>");
         out.println("<form action='servlet14' method='post'>");
-        out.println("전화: <input type='tel' name='tel'>");
+        out.println("전화: <input type='tel' name='tel'><br>");
         out.println("<button>다음</button>");
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

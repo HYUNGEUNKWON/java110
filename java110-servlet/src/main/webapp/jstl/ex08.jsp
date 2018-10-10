@@ -1,8 +1,8 @@
-<%@ page language="java"
+<%@ page language="java" 
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,7 @@ pageContext.setAttribute("names1", "홍길동,임꺽정,유관순,김구");
 </c:forTokens>
 </ul>
 
+
 <h2>Query String 문자열</h2>
 <%
 pageContext.setAttribute("qs", "name=홍길동&age=20&tel=1111-2222");
@@ -37,8 +38,17 @@ pageContext.setAttribute("qs", "name=홍길동&age=20&tel=1111-2222");
 </c:forTokens>
 </ul>
 
+
+
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

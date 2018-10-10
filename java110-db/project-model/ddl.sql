@@ -25,6 +25,9 @@ DROP TABLE IF EXISTS p1_lect_tchr RESTRICT;
 -- 수강생
 DROP TABLE IF EXISTS p1_lect_stud RESTRICT;
 
+-- 회원사진
+DROP TABLE IF EXISTS p1_memb_phot RESTRICT;
+
 -- 회원
 CREATE TABLE p1_memb (
     mno   INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
@@ -95,7 +98,7 @@ ALTER TABLE p1_att_file
 CREATE TABLE p1_stud (
     sno  INTEGER     NOT NULL COMMENT '학생번호', -- 학생번호
     schl VARCHAR(50) NOT NULL COMMENT '최종학력', -- 최종학력
-    work CHAR(1)     NOT NULL COMMENT '재직여부' -- 재직여부
+    work CHAR(1)     NOT NULL COMMENT '재직자' -- 재직자
 )
 COMMENT '학생';
 
@@ -189,6 +192,20 @@ ALTER TABLE p1_lect_stud
             lno  -- 강의번호
         );
 
+-- 회원사진
+CREATE TABLE p1_memb_phot (
+    mno   INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
+    photo VARCHAR(255) NOT NULL COMMENT '사진' -- 사진
+)
+COMMENT '회원사진';
+
+-- 회원사진
+ALTER TABLE p1_memb_phot
+    ADD CONSTRAINT PK_p1_memb_phot -- 회원사진 기본키
+        PRIMARY KEY (
+            mno -- 회원번호
+        );
+
 -- 게시판
 ALTER TABLE p1_board
     ADD CONSTRAINT FK_p1_memb_TO_p1_board -- 회원 -> 게시판
@@ -251,22 +268,22 @@ ALTER TABLE p1_lect
 
 -- 강의배정
 ALTER TABLE p1_lect_tchr
-    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_tchr -- 강의 -> 강의배정
-        FOREIGN KEY (
-            lno -- 강의번호
-        )
-        REFERENCES p1_lect ( -- 강의
-            lno -- 강의번호
-        );
-
--- 강의배정
-ALTER TABLE p1_lect_tchr
     ADD CONSTRAINT FK_p1_tchr_TO_p1_lect_tchr -- 강사 -> 강의배정
         FOREIGN KEY (
             tno -- 강사번호
         )
         REFERENCES p1_tchr ( -- 강사
             tno -- 강사번호
+        );
+
+-- 강의배정
+ALTER TABLE p1_lect_tchr
+    ADD CONSTRAINT FK_p1_lect_TO_p1_lect_tchr -- 강의 -> 강의배정
+        FOREIGN KEY (
+            lno -- 강의번호
+        )
+        REFERENCES p1_lect ( -- 강의
+            lno -- 강의번호
         );
 
 -- 수강생
@@ -287,4 +304,14 @@ ALTER TABLE p1_lect_stud
         )
         REFERENCES p1_lect ( -- 강의
             lno -- 강의번호
+        );
+
+-- 회원사진
+ALTER TABLE p1_memb_phot
+    ADD CONSTRAINT FK_p1_memb_TO_p1_memb_phot -- 회원 -> 회원사진
+        FOREIGN KEY (
+            mno -- 회원번호
+        )
+        REFERENCES p1_memb ( -- 회원
+            mno -- 회원번호
         );

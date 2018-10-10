@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" 
+    contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"
-    isErrorPage="true"
-    %>
+    isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JSP 액션 태그</title>
+<title>JSP액션태그</title>
 </head>
 <body>
 <h1>jsp:forward - RequestDispatcher.forward()</h1>
@@ -23,7 +24,7 @@ String op = request.getParameter("op");
 
 int result = 0;
 
-switch (op) {
+switch(op) {
 case "+": result = a + b; break;
 case "-": result = a - b; break;
 default:%>
@@ -34,7 +35,46 @@ default:%>
 %>
 
 <p><%=a%> <%=op%> <%=b%> = <%=result%></p>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
