@@ -23,9 +23,10 @@ public class AuthServiceImpl implements AuthService {
     public void setTeacherDao(TeacherDao teacherDao) {
         this.teacherDao = teacherDao;
     }
-
+    
     @Override
-    public Member getMember(String email, String password, String memberType) {
+    public Member getMember(
+            String email, String password, String memberType) {
         if (memberType.equals("manager")) {
             return managerDao.findByEmailPassword(email, password);
             
@@ -34,12 +35,12 @@ public class AuthServiceImpl implements AuthService {
             
         } else if (memberType.equals("teacher")) {
             return teacherDao.findByEmailPassword(email, password);
+            
         } else {
             return null;
         }
-        
     }
-
+    
 }
 
 

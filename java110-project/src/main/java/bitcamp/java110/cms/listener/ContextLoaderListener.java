@@ -14,6 +14,7 @@ import bitcamp.java110.cms.service.impl.ManagerServiceImpl;
 import bitcamp.java110.cms.service.impl.StudentServiceImpl;
 import bitcamp.java110.cms.service.impl.TeacherServiceImpl;
 import bitcamp.java110.cms.util.DataSource;
+import bitcamp.java110.cms.util.TransactionManager;
 
 //@WebListener
 public class ContextLoaderListener implements ServletContextListener {
@@ -31,6 +32,9 @@ public class ContextLoaderListener implements ServletContextListener {
                     sc.getInitParameter("jdbc.url"),
                     sc.getInitParameter("jdbc.username"),
                     sc.getInitParameter("jdbc.password"));
+            
+            TransactionManager txManager = TransactionManager.getInstance();
+            txManager.setDataSource(dataSource);
             
             // DAO 객체 생성 및 DB 커네션풀 주입하기
             MemberMysqlDao memberDao = new MemberMysqlDao();
@@ -54,28 +58,25 @@ public class ContextLoaderListener implements ServletContextListener {
             managerService.setManagerDao(managerDao);
             managerService.setPhotoDao(photoDao);
             
-            // 서블릿에서 Service를 이용할 수 있도록 ServletContext 보관소에 저장하기
-            sc.setAttribute("managerService", managerService);
-            
             StudentServiceImpl studentService = new StudentServiceImpl();
             studentService.setMemberDao(memberDao);
             studentService.setStudentDao(studentDao);
             studentService.setPhotoDao(photoDao);
-            
-            sc.setAttribute("studentService", studentService);
             
             TeacherServiceImpl teacherService = new TeacherServiceImpl();
             teacherService.setMemberDao(memberDao);
             teacherService.setTeacherDao(teacherDao);
             teacherService.setPhotoDao(photoDao);
             
-            sc.setAttribute("teacherService", teacherService);
-            
             AuthServiceImpl authService = new AuthServiceImpl();
             authService.setManagerDao(managerDao);
             authService.setStudentDao(studentDao);
             authService.setTeacherDao(teacherDao);
             
+            // 서블릿에서 Service를 이용할 수 있도록 ServletContext 보관소에 저장하기
+            sc.setAttribute("managerService", managerService);
+            sc.setAttribute("studentService", studentService);
+            sc.setAttribute("teacherService", teacherService);
             sc.setAttribute("authService", authService);
             
         } catch (Exception e) {

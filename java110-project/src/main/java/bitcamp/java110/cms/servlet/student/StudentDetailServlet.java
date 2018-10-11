@@ -3,7 +3,6 @@ package bitcamp.java110.cms.servlet.student;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,9 +25,9 @@ public class StudentDetailServlet extends HttpServlet {
         
         int no = Integer.parseInt(request.getParameter("no"));
         
-        ServletContext sc = this.getServletContext();
-        StudentService studentService = 
-                (StudentService)sc.getAttribute("studentService");
+        StudentService studentService = (StudentService)this.getServletContext()
+                .getAttribute("studentService");
+        
         Student s = studentService.get(no);
         request.setAttribute("student", s);
         

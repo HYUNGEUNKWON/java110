@@ -26,13 +26,12 @@ public class StudentMysqlDao implements StudentDao {
         try {
             con = dataSource.getConnection();
             stmt = con.createStatement();
-            String sql = "insert into p1_memb(name,email,pwd,tel,cdt)"
-                    + " values('" + student.getName()
-                    + "','" + student.getEmail()
-                    + "',password('" + student.getPassword()
-                    + "'),'" + student.getTel()
-                    + "',now())";
             
+            String sql = "insert into p1_stud(sno,schl,work)"
+                    + " values(" + student.getNo()
+                    + ",'" + student.getSchool()
+                    + "','" + (student.isWorking()?'Y':'N')
+                    + "')";
             return stmt.executeUpdate(sql);
             
         } catch (Exception e) {
@@ -40,6 +39,7 @@ public class StudentMysqlDao implements StudentDao {
             
         } finally {
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -81,6 +81,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
         return list;
     }
@@ -127,6 +128,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -137,6 +139,7 @@ public class StudentMysqlDao implements StudentDao {
         
         try {
             con = dataSource.getConnection();
+            
             stmt = con.createStatement();
             rs = stmt.executeQuery(
                     "select" + 
@@ -172,6 +175,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -185,12 +189,13 @@ public class StudentMysqlDao implements StudentDao {
             
             String sql = "delete from p1_stud where sno=" + no ;
             return stmt.executeUpdate(sql);
-                        
+            
         } catch (Exception e) {
             throw new DaoException(e);
             
         } finally {
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
     
@@ -238,6 +243,7 @@ public class StudentMysqlDao implements StudentDao {
         } finally {
             try {rs.close();} catch (Exception e) {}
             try {stmt.close();} catch (Exception e) {}
+            dataSource.returnConnection(con);
         }
     }
 }
