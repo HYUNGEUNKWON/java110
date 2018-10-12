@@ -29,7 +29,7 @@ public class StudentMysqlDao implements StudentDao {
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, student.getNo());
             stmt.setString(2, student.getSchool());
-            stmt.setBoolean(3, student.isWorking());
+            stmt.setString(3, student.isWorking()?"Y":"N");
             return stmt.executeUpdate();
             
         } catch (Exception e) {
@@ -60,7 +60,6 @@ public class StudentMysqlDao implements StudentDao {
                     " from p1_stud s" + 
                     " inner join p1_memb m on s.sno = m.mno";
             stmt = con.prepareStatement(sql);
-            
             rs = stmt.executeQuery();
             
             while (rs.next()) {

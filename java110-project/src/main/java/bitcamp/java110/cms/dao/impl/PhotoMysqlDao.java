@@ -22,11 +22,10 @@ public class PhotoMysqlDao implements PhotoDao {
         
         try {
             con = dataSource.getConnection();
-            String sql = "insert into p1_memb_phot(mno,photo)values(?, ?)";
+            String sql = "insert into p1_memb_phot(mno,photo) values(?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, no);
             stmt.setString(2, filename);
-            
             return stmt.executeUpdate();
             
         } catch (Exception e) {

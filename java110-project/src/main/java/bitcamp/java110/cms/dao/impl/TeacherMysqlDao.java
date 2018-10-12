@@ -3,7 +3,6 @@ package bitcamp.java110.cms.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +25,7 @@ public class TeacherMysqlDao implements TeacherDao {
         
         try {
             con = dataSource.getConnection();
-            String sql = "insert into p1_tchr(tno,hrpay,subj)"
-                    + " values(?,?,?)";
+            String sql = "insert into p1_tchr(tno,hrpay,subj) values(?,?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, teacher.getNo());
             stmt.setInt(2, teacher.getPay());
@@ -60,9 +58,8 @@ public class TeacherMysqlDao implements TeacherDao {
                     " t.hrpay," +
                     " t.subj" +
                     " from p1_tchr t" + 
-                    " inner join p1_memb m on t.tno = m.mno";
+                    " inner join p1_memb m on t.tno=m.mno";
             stmt = con.prepareStatement(sql);
-            
             rs = stmt.executeQuery();
             
             while (rs.next()) {

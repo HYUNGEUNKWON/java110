@@ -20,13 +20,13 @@ public class ManagerMysqlDao implements ManagerDao {
     }
 
     public int insert(Manager manager) throws DaoException {
+        Connection con = null;
         PreparedStatement stmt = null;
         
-        Connection con = null;
         
         try {
             con = dataSource.getConnection();
-            String sql = "insert into p1_mgr(mrno,posi) values(?, ?)";
+            String sql = "insert into p1_mgr(mrno,posi) values(?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, manager.getNo());
             stmt.setString(2, manager.getPosition());
@@ -60,7 +60,6 @@ public class ManagerMysqlDao implements ManagerDao {
                     " inner join p1_memb m on mr.mrno = m.mno";
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
-                    
             
             while (rs.next()) {
                 Manager mgr = new Manager();
@@ -148,7 +147,6 @@ public class ManagerMysqlDao implements ManagerDao {
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, no);
             rs = stmt.executeQuery();
-                    
             
             if (rs.next()) {
                 Manager mgr = new Manager();
