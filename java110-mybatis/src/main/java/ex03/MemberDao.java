@@ -17,7 +17,9 @@ public class MemberDao {
     public int insert(Member member) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            return sqlSession.insert("memberdao.insert", member);
+            int count = sqlSession.insert("memberdao.insert", member);
+            sqlSession.commit();
+            return count;
         } finally {
             sqlSession.close();
         }
@@ -26,7 +28,9 @@ public class MemberDao {
     public int delete(int no) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            return sqlSession.delete("memberdao.delete", no); 
+            int count = sqlSession.delete("memberdao.delete", no);
+            sqlSession.commit();
+            return count;
         } finally {
             sqlSession.close();
         }
@@ -40,6 +44,16 @@ public class MemberDao {
             sqlSession.close();
         }
     }
+    
+    public Member findByNo(int no) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            return sqlSession.selectOne("memberdao.findByNo", no);
+        } finally {
+            sqlSession.close();
+        }
+    }
+    
 }
 
 
