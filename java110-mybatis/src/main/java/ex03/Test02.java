@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Test02 {
-
+ 
     public static void main(String[] args) throws Exception {
         
         // 1) mybatis 설정 파일 경로
@@ -32,13 +32,15 @@ public class Test02 {
         m.setName("홍길동3");
         m.setEmail("hong3@test.com");
         m.setPassword("1111");
-        m.setTel("111-111");
+        m.setTel("1111-2222");
         
         System.out.println(m.getNo());
-
+        
         memberDao.insert(m);
         
         System.out.println(m.getNo());
+        
+        
     }
 
 }
