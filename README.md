@@ -2,6 +2,15 @@
 
 비트캠프 **자바 110기** 실습 프로젝트
 
+## java110-project (tag: v5.7)
+
+- Mybatis에서 자동으로 생성해주는 Mapper(DAO) 객체 사용하기
+- Mybatis에서 트랜잭션 다루기
+
+## java110-project (tag: v5.7)
+
+- Mybatis persistence framework 적용하기
+
 ## java110-project (tag: v5.6)
 
 - Statement를 PreparedStatement로 변경하기
