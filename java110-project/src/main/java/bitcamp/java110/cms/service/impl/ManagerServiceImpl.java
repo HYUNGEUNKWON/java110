@@ -15,40 +15,39 @@ import bitcamp.java110.cms.service.ManagerService;
 @Service
 public class ManagerServiceImpl implements ManagerService {
 
-    @Autowired ManagerDao managerDao;
     @Autowired MemberDao memberDao;
     @Autowired PhotoDao photoDao;
-
+    @Autowired ManagerDao managerDao;
+    
     @Override
     public void add(Manager manager) {
         memberDao.insert(manager);
         managerDao.insert(manager);
-
+        
         if (manager.getPhoto() != null) {
-
+            
             HashMap<String,Object> params = new HashMap<>();
             params.put("no", manager.getNo());
             params.put("photo", manager.getPhoto());
-
+            
             photoDao.insert(params);
         }
-
     }
-
+    
     @Override
     public List<Manager> list(int pageNo, int pageSize) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("rowNo", (pageNo - 1) * pageSize);
         params.put("size", pageSize);
-
+        
         return managerDao.findAll(params);
     }
-
+    
     @Override
     public Manager get(int no) {
         return managerDao.findByNo(no);
     }
-
+    
     @Override
     public void delete(int no) {
         if (managerDao.delete(no) == 0) {

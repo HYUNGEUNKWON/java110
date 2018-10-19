@@ -15,39 +15,39 @@ import bitcamp.java110.cms.service.TeacherService;
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired TeacherDao teacherDao;
     @Autowired MemberDao memberDao;
-    @Autowired PhotoDao photoDao;    
+    @Autowired PhotoDao photoDao;
+    @Autowired TeacherDao teacherDao;
 
     @Override
     public void add(Teacher teacher) {
         memberDao.insert(teacher);
         teacherDao.insert(teacher);
-
+        
         if (teacher.getPhoto() != null) {
 
             HashMap<String,Object> params = new HashMap<>();
             params.put("no", teacher.getNo());
             params.put("photo", teacher.getPhoto());
-
+            
             photoDao.insert(params);
         }
     }
-
+    
     @Override
     public List<Teacher> list(int pageNo, int pageSize) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("rowNo", (pageNo - 1) * pageSize);
         params.put("size", pageSize);
-
+        
         return teacherDao.findAll(params);
     }
-
+    
     @Override
     public Teacher get(int no) {
         return teacherDao.findByNo(no);
     }
-
+    
     @Override
     public void delete(int no) {
         if (teacherDao.delete(no) == 0) {
@@ -55,7 +55,6 @@ public class TeacherServiceImpl implements TeacherService {
         }
         photoDao.delete(no);
         memberDao.delete(no);
-
     }
 }
 
