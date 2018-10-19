@@ -52,10 +52,11 @@ public class StudentAddServlet extends HttpServlet {
         s.setSchool(request.getParameter("school"));
         s.setWorking(Boolean.parseBoolean(request.getParameter("working")));
         
-        ApplicationContext iocContainer = (ApplicationContext)this.getServletContext().getAttribute("iocContainer");
-        
-        StudentService studentService = iocContainer.getBean(StudentService.class);
-        
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        StudentService studentService = 
+                iocContainer.getBean(StudentService.class);
         
         try {
             // 사진 데이터 처리

@@ -40,9 +40,11 @@ public class TeacherListServlet extends HttpServlet {
                 pageSize = 3;
         }
         
-        ApplicationContext iocContainer = (ApplicationContext)this.getServletContext().getAttribute("iocContainer");
-        
-        TeacherService teacherService = iocContainer.getBean(TeacherService.class);
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        TeacherService teacherService = 
+                iocContainer.getBean(TeacherService.class);
         
         List<Teacher> list = teacherService.list(pageNo, pageSize);
         request.setAttribute("list", list);

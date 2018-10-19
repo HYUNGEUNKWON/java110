@@ -56,7 +56,9 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(cookie);
         }
         
-        ApplicationContext iocContainer = (ApplicationContext)this.getServletContext().getAttribute("iocContainer");
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
         AuthService authService = iocContainer.getBean(AuthService.class);
         
         Member loginUser = authService.getMember(email, password, type);

@@ -40,9 +40,11 @@ public class ManagerListServlet extends HttpServlet {
                 pageSize = 3;
         }
         
-        ApplicationContext iocContainer = (ApplicationContext)this.getServletContext().getAttribute("iocContainer");
-        
-        ManagerService managerService = iocContainer.getBean(ManagerService.class);
+        ApplicationContext iocContainer = 
+                (ApplicationContext)this.getServletContext()
+                                        .getAttribute("iocContainer");
+        ManagerService managerService = 
+                iocContainer.getBean(ManagerService.class);
         
         List<Manager> list = managerService.list(pageNo, pageSize);
         
