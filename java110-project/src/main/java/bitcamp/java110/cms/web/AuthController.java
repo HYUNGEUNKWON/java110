@@ -6,13 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.java110.cms.domain.Member;
-import bitcamp.java110.cms.mvc.RequestMapping;
 import bitcamp.java110.cms.service.AuthService;
 
-@Component
+@Controller
 public class AuthController {
 
     @Autowired
@@ -20,17 +20,17 @@ public class AuthController {
     
     @RequestMapping("/auth/login")
     public String login(
+            String type,
+            String email,
+            String password,
+            String save,
             HttpServletRequest request, 
-            HttpServletResponse response) {
+            HttpServletResponse response,
+            HttpSession session) {
         
         if (request.getMethod().equals("GET")) {
             return  "/auth/form.jsp";
         }
-        
-        String type = request.getParameter("type");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String save = request.getParameter("save");
         
         if (save != null) {// 이메일 저장하기를 체크했다면,
             Cookie cookie = new Cookie("email", email);
@@ -45,7 +45,6 @@ public class AuthController {
         
         Member loginUser = authService.getMember(email, password, type);
         
-        HttpSession session = request.getSession();
         if (loginUser != null) {
             // 회원 정보를 세션에 보관한다.
             session.setAttribute("loginUser", loginUser);
@@ -71,13 +70,8 @@ public class AuthController {
     }
     
     @RequestMapping("/auth/logout")
-    public String logout(
-            HttpServletRequest request, 
-            HttpServletResponse response) {
-        
-        HttpSession session = request.getSession();
+    public String logout(HttpSession session) {
         session.invalidate();
-        
         return "redirect:login";
     }
 }
