@@ -61,6 +61,7 @@ public class ManagerServiceImpl implements ManagerService {
         return managerDao.findByNo(no);
     }
     
+    @Transactional
     @Override
     public void delete(int no) {
         if (managerDao.delete(no) == 0) {
